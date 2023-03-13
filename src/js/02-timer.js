@@ -50,14 +50,21 @@ const options = {
 
 flatpickr('#datetime-picker', options);
 
+function addLeadingZero(value) {
+  return String(value).padStart(2, '0');
+}
+
 function startTimer() {
   timerID = setInterval(() => {
     const targetDate = startDate - new Date();
     const renderingTime = convertMs(targetDate);
-    daysEl.textContent = renderingTime.days;
-    hoursEl.textContent = renderingTime.hours;
-    minutesEl.textContent = renderingTime.minutes;
-    secondsEl.textContent = renderingTime.seconds;
+    daysEl.textContent = addLeadingZero(renderingTime.days);
+    hoursEl.textContent = addLeadingZero(renderingTime.hours);
+    minutesEl.textContent = addLeadingZero(renderingTime.minutes);
+    secondsEl.textContent = addLeadingZero(renderingTime.seconds);
+    if (targetDate < 1000) {
+      clearInterval(timerID);
+    }
   }, 1000);
 }
 
