@@ -37,4 +37,5 @@ function onFormSubmit(event) {
         );
       });
   }
+  event.currentTarget.reset();
 }

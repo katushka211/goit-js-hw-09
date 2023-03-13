@@ -10,6 +10,7 @@ const minutesEl = document.querySelector('[data-minutes]');
 const secondsEl = document.querySelector('[data-seconds]');
 let startDate = null;
 let timerID = 0;
+startBtn.disabled = true;
 
 function convertMs(ms) {
   // Number of milliseconds per unit of time
@@ -62,13 +63,9 @@ function startTimer() {
     hoursEl.textContent = addLeadingZero(renderingTime.hours);
     minutesEl.textContent = addLeadingZero(renderingTime.minutes);
     secondsEl.textContent = addLeadingZero(renderingTime.seconds);
-    if (
-      renderingTime.days === 0 &&
-      renderingTime.hours === 0 &&
-      renderingTime.minutes === 0 &&
-      renderingTime.seconds === 0
-    ) {
+    if (targetDate <= 1000) {
       clearInterval(timerID);
+      return;
     }
   }, 1000);
 }
