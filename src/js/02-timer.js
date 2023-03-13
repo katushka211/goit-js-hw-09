@@ -40,7 +40,7 @@ const options = {
     if (selectedDates[0].getTime() < Date.now()) {
       startBtn.disabled = true;
       clearInterval(timerID);
-      window.alert('Please choose a date in the future');
+      Notiflix.Notify.failure('Please choose a date in the future');
     } else {
       startDate = selectedDates[0].getTime();
       startBtn.disabled = false;
