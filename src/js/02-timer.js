@@ -8,7 +8,7 @@ const daysEl = document.querySelector('[data-days]');
 const hoursEl = document.querySelector('[data-hours]');
 const minutesEl = document.querySelector('[data-minutes]');
 const secondsEl = document.querySelector('[data-seconds]');
-let startDate = 0;
+let startDate = null;
 let timerID = null;
 
 function convertMs(ms) {
@@ -64,6 +64,6 @@ function startTimer() {
 startBtn.addEventListener('click', onStartBtnClick);
 
 function onStartBtnClick() {
-  if (timerID) return;
+  if (!startDate) return;
   startTimer();
 }
